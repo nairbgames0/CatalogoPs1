@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <!-- ====================================================================================
+         NAIRB GAMES - CATÁLOGO VAULT DE PS1
+         ====================================================================================
+         Página web autocontenida con estética Gamer / Cyberpunk para la preservación y descarga
+         de juegos clásicos de PlayStation 1.
+         ==================================================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAIRB GAMES | Catálogo Gamer PS1</title>
+
+    <!-- Tailwind CSS (Framework de Estilos) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fuentes de Google: Orbitron (Títulos Gamer), Rajdhani (Cuerpo) y Fira Code (Código) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons (Iconos de la interfaz) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Configuración de Colores Personalizados en Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: '#0a0a0f',       // Fondo principal ultra oscuro
+                            card: '#12131e',       // Fondo de las tarjetas de juegos
+                            border: '#1f2438',     // Bordes de los elementos
+                            cyan: '#00f3ff',       // Neón Cian brillante
+                            magenta: '#bc13fe',    // Neón Magenta brillante
+                            psblue: '#00439c',     // Azul clásico PlayStation
+                            psgold: '#ffb703',     // Dorado gamer
+                            red: '#ff3b5c'        // Rojo neón para alertas/botones
+                        }
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos CSS Personalizados para Efectos Neón y Fondos Retro -->
+    <style>
+        /* Fondo con retícula Cyberpunk de PlayStation */
+        body {
+            background-color: #0a0a0f;
+            color: #e2e8f0;
+            font-family: 'Rajdhani', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(188, 19, 254, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(0, 243, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+        }
+
+        /* Efectos de Brillo Neón (Text Glow & Box Shadow) */
+        .glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7), 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+        .box-glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3), inset 0 0 15px rgba(0, 243, 255, 0.1);
+        }
+        .box-glow-magenta {
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.3), inset 0 0 15px rgba(188, 19, 254, 0.1);
+        }
+
+        /* Animación Hover en las tarjetas de juegos */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px -5px rgba(0, 243, 255, 0.3), 0 0 15px rgba(188, 19, 254, 0.4);
+        }
+
+        /* Barra de desplazamiento (Scrollbar) Gamer */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2438;
+            border-radius: 4px;
+            border: 1px solid #00f3ff;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bc13fe;
+        }
+
+        /* Símbolos icónicos de botones de PlayStation (▲ ● ✖ ■) */
+        .ps-sym-triangle { color: #00bda1; }
+        .ps-sym-circle { color: #ff3b5c; }
+        .ps-sym-cross { color: #4b7bec; }
+        .ps-sym-square { color: #ff5286; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyber-magenta selection:text-white">
+
+    <!-- ====================================================================================
+         1. CABECERA PRINCIPAL (HEADER / HERO BANNER)
+         ==================================================================================== -->
+    <header class="relative border-b border-cyber-border bg-cyber-dark/90 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                
+                <!-- Logotipo de la página: NAIRB GAMES -->
+                <div class="flex items-center gap-4">
+                    <div class="relative flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-cyber-psblue via-cyber-magenta to-cyber-cyan p-0.5 box-glow-magenta">
+                        <div class="w-full h-full bg-cyber-dark rounded-[14px] flex items-center justify-center">
+                            <i class="fa-solid fa-gamepad text-2xl text-cyber-cyan glow-cyan"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <h1 class="font-orbitron text-2xl sm:text-3xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-white to-cyber-magenta glow-cyan">
+                                NAIRB GAMES
+                            </h1>
+                            <span class="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-cyber-psblue/40 border border-cyber-cyan text-cyan-300">
+                                PS1 
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400 font-mono tracking-widest flex items-center gap-2 mt-0.5">
+                            <span>CATÁLOGO PLAYSTATION 1</span>
+                            <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Botones icónicos de PlayStation y Contador de juegos -->
+                <div class="flex items-center gap-6">
+                    <!-- Iconos PS1 -->
+                    <div class="hidden lg:flex items-center gap-3 px-4 py-2 rounded-xl bg-cyber-card border border-cyber-border text-lg font-bold tracking-widest">
+                        <span class="ps-sym-triangle">▲</span>
+                        <span class="ps-sym-circle">●</span>
+                        <span class="ps-sym-cross">✖</span>
+                        <span class="ps-sym-square">■</span>
+                    </div>
+
+                    <!-- Contador Dinámico de Juegos -->
+                    <div class="flex items-center gap-3 bg-cyber-card/90 border border-cyber-cyan/40 px-4 py-2 rounded-xl">
+                        <i class="fa-solid fa-compact-disc text-cyber-cyan text-xl animate-spin" style="animation-duration: 8s;"></i>
+                        <div>
+                            <div class="text-[10px] uppercase tracking-wider text-slate-400 font-mono">Juegos Visibles</div>
+                            <div class="text-lg font-orbitron font-bold text-white flex items-center gap-1">
+                                <span id="counter-visible" class="text-cyber-cyan">69</span>
+                                <span class="text-xs text-slate-500">/</span>
+                                <span id="counter-total" class="text-xs text-slate-400">69</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ====================================================================================
+         2. CONTENIDO PRINCIPAL: BARRA DE BÚSQUEDA, FILTROS Y CATÁLOGO
+         ==================================================================================== -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+        
+        <!-- SECCIÓN DE BUSCADOR Y FILTROS POR GÉNERO -->
+        <section class="mb-8 space-y-4">
+            <div class="flex flex-col md:flex-row gap-4">
+                
+                <!-- Buscador en tiempo real por Nombre o Género -->
+                <div class="relative flex-grow">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-cyber-cyan">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" id="search-input" 
+                        placeholder="Buscar juego por título (ej. Tekken, Resident Evil, Crash)..." 
+                        class="w-full pl-11 pr-10 py-3.5 bg-cyber-card/90 border border-cyber-border rounded-xl text-slate-100 placeholder-slate-500 font-rajdhani font-semibold text-lg focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all">
+                    <button id="clear-search" class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Selector de Ordenamiento (A-Z / Z-A) -->
+                <div class="flex gap-2 min-w-[200px]">
+                    <div class="relative w-full">
+                        <select id="sort-filter" class="w-full appearance-none bg-cyber-card/90 border border-cyber-border text-slate-200 font-semibold px-4 py-3.5 rounded-xl cursor-pointer focus:outline-none focus:border-cyber-cyan transition-all">
+                            <option value="AZ">🔤 Nombre (A - Z)</option>
+                            <option value="ZA">🔤 Nombre (Z - A)</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-cyber-cyan">
+                            <i class="fa-solid fa-arrow-down-a-z text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones tipo Pill para Filtrar por Géneros -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none pt-2" id="genre-pills">
+                <!-- Se genera automáticamente con JavaScript -->
+            </div>
+        </section>
+
+        <!-- REJILLA DEL CATÁLOGO DE JUEGOS (GRID CARDS) -->
+        <section id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Las 69 tarjetas de los juegos se insertan aquí dinámicamente mediante JS -->
+        </section>
+
+        <!-- MENSAJE DE RESULTADOS VACÍOS (Si la búsqueda no coincide con ningún juego) -->
+        <div id="no-results" class="hidden text-center py-16 px-4 bg-cyber-card/40 border border-dashed border-cyber-border rounded-2xl my-8">
+            <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-cyber-magenta/10 flex items-center justify-center text-cyber-magenta border border-cyber-magenta/30">
+                <i class="fa-solid fa-ghost text-4xl"></i>
+            </div>
+            <h3 class="font-orbitron text-xl font-bold text-white mb-2">Juego no encontrado</h3>
+            <p class="text-slate-400 max-w-md mx-auto text-sm">No se encontraron juegos con los términos buscados. Intenta borrar el buscador.</p>
+            <button id="btn-reset-filters" class="mt-4 px-5 py-2.5 rounded-xl bg-cyber-cyan/10 border border-cyber-cyan text-cyber-cyan font-bold hover:bg-cyber-cyan hover:text-black transition-all">
+                Mostrar Todos los Juegos
+            </button>
+        </div>
+    </main>
+
+    <!-- ====================================================================================
+         3. PIE DE PÁGINA (FOOTER)
+         ==================================================================================== -->
+    <footer class="border-t border-cyber-border bg-cyber-dark/95 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+                <div class="font-orbitron font-bold text-lg text-white flex items-center justify-center md:justify-start gap-2">
+                    <span class="text-cyber-cyan">NAIRB GAMES</span>
+                    <span class="text-xs text-slate-500">| CATÁLOGO PS1</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">Biblioteca interactiva para la descarga y emulación de títulos clásicos de PlayStation 1.</p>
+            </div>
+            
+            <div class="flex items-center gap-4 text-xs font-mono text-slate-400">
+                <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyber-card border border-cyber-border">
+                    <i class="fa-solid fa-microchip text-cyber-cyan"></i> Emuladores: DuckStation / ePSXe
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====================================================================================
+         4. VENTANA MODAL (INFORMACIÓN Y DETALLES DEL JUEGO)
+         ==================================================================================== -->
+    <div id="game-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="relative w-full max-w-xl bg-cyber-card border border-cyber-cyan/50 rounded-2xl shadow-2xl overflow-hidden text-slate-100 flex flex-col max-h-[90vh]">
+            
+            <!-- Encabezado de la ventana modal -->
+            <div id="modal-banner" class="relative p-6 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border-b border-cyber-border">
+                <button id="modal-close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 hover:bg-cyber-red hover:text-white border border-slate-700 flex items-center justify-center transition-all z-10">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+
+                <div class="flex items-center gap-4">
+                    <div id="modal-icon-container" class="w-16 h-16 rounded-xl flex items-center justify-center text-3xl shrink-0 shadow-lg border border-white/20 bg-cyber-psblue">
+                        <i id="modal-icon" class="fa-solid fa-gamepad text-white"></i>
+                    </div>
+                    <div class="pr-8">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span id="modal-genre-badge" class="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase font-mono bg-cyber-magenta/30 border border-cyber-magenta text-magenta-300"></span>
+                            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold font-mono bg-cyber-psblue/40 border border-cyber-cyan text-cyan-300">PS1</span>
+                        </div>
+                        <h2 id="modal-title" class="font-orbitron text-2xl font-black text-white glow-cyan leading-tight"></h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuerpo con instrucciones de emulación -->
+            <div class="p-6 space-y-4 overflow-y-auto flex-grow">
+                <h4 class="font-orbitron font-bold text-sm text-cyber-cyan uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-sliders"></i> Recomendación de Emulación
+                </h4>
+                <div class="bg-cyber-dark p-4 rounded-xl border border-cyber-border space-y-2 text-xs">
+                    <p class="text-slate-300"><strong class="text-white">DuckStation / ePSXe / RetroArch:</strong> Para disfrutar de este título de PlayStation 1, se recomienda utilizar el emulador DuckStation en PC o Android para mejor resolución HD.</p>
+                </div>
+            </div>
+
+            <!-- Pie de la ventana modal con los botones de acción -->
+            <div class="p-4 bg-cyber-dark border-t border-cyber-border flex flex-col sm:flex-row gap-3 items-center justify-between">
+                <button id="modal-fav-btn" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-cyber-border text-slate-300 hover:text-white hover:border-cyber-magenta font-semibold text-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-heart text-cyber-magenta"></i>
+                    <span id="modal-fav-text">Favoritos</span>
+                </button>
+
+                <button id="modal-download-btn" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-magenta font-orbitron font-bold text-black hover:opacity-90 shadow-lg shadow-cyber-cyan/20 text-sm tracking-wider uppercase transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i>
+                    <span>DESCARGAR JUEGO</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN TIPO TOAST -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="px-5 py-3 rounded-xl bg-cyber-card border border-cyber-cyan text-white shadow-2xl flex items-center gap-3 box-glow-cyan">
+            <i id="toast-icon" class="fa-solid fa-check-circle text-cyber-cyan text-lg"></i>
+            <span id="toast-message" class="font-semibold text-sm"></span>
+        </div>
+    </div>
+
+    <!-- ====================================================================================
+         5. LÓGICA EN JAVASCRIPT (ARREGLO DE 69 JUEGOS Y FUNCIONALIDADES)
+         ==================================================================================== -->
+    <script>
+        /* ==================================================================================
+           ARRAY CON LOS 69 JUEGOS DE PLAYSTATION 1
+           ----------------------------------------------------------------------------------
+           En cada objeto del juego puedes colocar la URL de tu imagen de portada en `imagen: ""`
+           y el enlace donde está alojado el juego para su descarga en `enlaceDescarga: ""`.
+           ================================================================================== */
+        const listaDeJuegos = [
+            {
+                id: 1,
+                titulo: "Driver",
+                genero: "Carreras",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/5/5e/Driver_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 2,
+                titulo: "Einhander",
+                genero: "Acción",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxslM1xI8ObMjCfwUBiWJSkpCUio5wehac0AdEgwMcaw&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 3,
+                titulo: "Final Fantasy VII",
+                genero: "RPG",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIcZNYREeNAKvNHF4618hxq-YvvDi1qn6jbo2nBVxhpg&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 4,
+                titulo: "Frogger",
+                genero: "Plataformas",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuT9OyolHz_6kTLv0rgnwnUnkEhHqr2GSkX8QnA0vZwHijWTbH3WkM-s5F&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 5,
+                titulo: "Gran Turismo (v1.1)",
+                genero: "Carreras",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpOiFtL6i8eq7H7aPLMUxkImX2OODuYMpcOHqE8KIkz0q-3PdxiZTIj1cy&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 6,
+                titulo: "Gran Turismo 2 (Arcade Mode)",
+                genero: "Carreras",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk6B6U55rDuTrxTGd1SgjIWTm-KAKfcfRJTstF-OsCgQIV8Mq7Gt21OIc&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 7,
+                titulo: "Gran Turismo 2 (Simulation Mode)",
+                genero: "Carreras",
+                imagen: "https://www.gran-turismo.com/images/c/i1Fieh6FHq9ifuH.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 8,
+                titulo: "Grand Theft Auto 2",
+                genero: "Acción",
+                imagen: "https://m.media-amazon.com/images/I/619ot20VdGL._AC_UF1000,1000_QL80_.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 9,
+                titulo: "Grand Turismo 2",
+                genero: "Carreras",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSu3jZI6sJukYAg6EyJyiquDvMIzdLoKeyNGpZAatt5T591_6l5HBQY8w&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 10,
+                titulo: "Harry Potter & The Sorcerer's Stone",
+                genero: "Acción / Aventura",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMmiSHz5m25-XA-L0PhPP9ZSQTYsMECJ56s8WFabyx8Ti3FtuG_1nBYNIW&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 11,
+                titulo: "Harry Potter and the Chamber of Secrets",
+                genero: "Acción / Aventura",
+                imagen: "https://storage.googleapis.com/images.pricecharting.com/AMIfv94hFdzenWytvx3t8t3mS7Rw4ac-eAi5588qGrPxU3fx6bPmATkA0R4ttLEbhjTQsg0cF-ymIP-5ti0mqnHp7Wdjvvu8QZRbgNuegBxqNdWoZx2McEPd9CGDzbtFfzePDO68zO_nqyR-VgpA7_MfAklS8hXKgQ/240.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 12,
+                titulo: "Hot Shots Golf",
+                genero: "Deportes",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt3yoRtc_OvvcYf7H9LmJgYj-T0HtvP5GbvDfHI7hBs867ksKmGqcBGzo&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 13,
+                titulo: "Jackie Chan Stuntmaster",
+                genero: "Plataformas",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/e/e6/JackieChanStuntmaster.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 14,
+                titulo: "Jumping Flash!",
+                genero: "Plataformas",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/2/2e/Jumping_Flash_art.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 15,
+                titulo: "Klonoa - Door to Phantomile",
+                genero: "Plataformas",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/2/25/Klonoa_playstation_front.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 16,
+                titulo: "Legacy of Kain - Soul Reaver",
+                genero: "Acción / Aventura",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVlpgQ3-YZ3Vmk2MsMv_lsz-i-CammEMxecF-lccO8EA&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 17,
+                titulo: "Legend of Mana",
+                genero: "RPG",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/0/09/Legend_of_Mana.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 18,
+                titulo: "Marvel vs. Capcom - Clash of Super Heroes",
+                genero: "Lucha",
+                imagen: "https://i.ebayimg.com/images/g/KhUAAOxyqUpQ9JOL/s-l640.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 20,
+                titulo: "Medal of Honor",
+                genero: "Acción",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/e/e9/Medal_of_Honor_%281999_video_game%29.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 21,
+                titulo: "MediEvil",
+                genero: "Acción / Aventura",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/d/d3/Medievil_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 22,
+                titulo: "MediEvil II",
+                genero: "Acción / Aventura",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/f/f2/MediEvil_2_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 23,
+                titulo: "Mega Man X6",
+                genero: "Plataformas",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9po8F6rQ4lzqXFW59VRsAwrO3y3fwHSIcs-VSaq3RTw&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 24,
+                titulo: "Mega Man X4",
+                genero: "Plataformas",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa5Kk6sUhVXK0Cy6jcgzS5Rg_-j5R45jXzSz4yDwT9JnMHIDaISLj-WPsG&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 25,
+                titulo: "Metal Gear Solid",
+                genero: "Terror / Sigilo",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqjFwYyGrKVF2Sew0FogBGYC5yjPQEokQyOzL-drpXxTSuanAr-faeBslI&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 26,
+                titulo: "Metal Slug X",
+                genero: "Acción",
+                imagen: "https://www.lukiegames.com/assets/images/PS1/ps1_metal_slug_x-120314.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 27,
+                titulo: "Mortal Kombat Trilogy",
+                genero: "Lucha",
+                imagen: "https://static.wikia.nocookie.net/thegameroom/images/0/0a/Mortal_Kombat_Trilogy_Box_Art.jpg/revision/latest?cb=20140723215302", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 28,
+                titulo: "NASCAR Rumble",
+                genero: "Carreras",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXsO8QEngVojk8YM504DhElqqaTHZk_a_ljGDfcpYUdA&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 29,
+                titulo: "Need for Speed III - Hot Pursuit",
+                genero: "Carreras",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDDh2-lZeZP9c1QDafYkL20FSLXNqZSpHheMFWtuVPcyZBlWIAvVlX-wQ&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 30,
+                titulo: "Oddworld - Abe's Oddysee",
+                genero: "Plataformas",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAgof775HcfPbGE5s2br9PoKyPxd9fWkut7nEA1jaqIw&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 31,
+                titulo: "One",
+                genero: "Acción",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/d/db/One_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 32,
+                titulo: "PaRappa the Rapper",
+                genero: "Plataformas",
+                imagen: "https://i5.walmartimages.com/seo/Restored-Parappa-The-Rapper-Sony-PlayStation-1-1997-Music-Game-Refurbished_6b9d109f-0350-480b-832b-957a98a38151.2908a9c89a3370b7bd99c2db5f7d4712.jpeg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 33,
+                titulo: "Parasite Eve",
+                genero: "RPG",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/3/3f/Parasite_Eve_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 34,
+                titulo: "Pepsiman",
+                genero: "Plataformas",
+                imagen: "https://images.steamusercontent.com/ugc/1798603330192503373/035CE9861EBB0167ABED88F09720C21DFC5966F2/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 35,
+                titulo: "R-Type Delta",
+                genero: "Acción",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/8/85/R-Type_Delta_%28cover%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 36,
+                titulo: "R4 - Ridge Racer Type 4",
+                genero: "Carreras",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1fysEhxIhcz8gDCDoUAac15kD7fHzNPwzW7AfAn2nDg&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 37,
+                titulo: "Rayman (Europe)",
+                genero: "Plataformas",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp-kz_tWodOERpzSVma5gztsg5xricPKiyzD90q3tVzuFFBK0g3cmYZsDD&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 39,
+                titulo: "Resident Evil 2",
+                genero: "Terror / Sigilo",
+                imagen: "https://static.wikia.nocookie.net/residentevil/images/f/f9/Resident_Evil_2_Caratula_USA.png/revision/latest?cb=20191002001320&path-prefix=es", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 40,
+                titulo: "Road Rash - Jailbreak",
+                genero: "Carreras",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/5/5b/Road_Rash_-_Jailbreak_coverart.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 41,
+                titulo: "Silent Hill",
+                genero: "Terror / Sigilo",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/9/96/Silent_Hill_video_game_cover.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 42,
+                titulo: "Soulblade",
+                genero: "Lucha",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDdGjxqtAG6X2MNLXxODcE1DUlW_f6f1FT16cUgFqplQAMGaFVSfQV0Qg&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 43,
+                titulo: "Spider-Man 2 - Enter Electro",
+                genero: "Acción / Aventura",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGVEoLNrBk3Rc5dLO_vYvaYsRoSN1zmehXGn7yLEpG2A&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 44,
+                titulo: "Spider-Man",
+                genero: "Acción / Aventura",
+                imagen: "https://m.media-amazon.com/images/I/61NNTi00MeL._AC_UF1000,1000_QL80_.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 45,
+                titulo: "Spyro - Year of the Dragon",
+                genero: "Plataformas",
+                imagen: "https://m.media-amazon.com/images/I/81rrLcv2w5L.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 46,
+                titulo: "Spyro 3 Year Of The Dragon",
+                genero: "Plataformas",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8GMnLCQS9ox2NQKbdyGSRXL4FNuE8S1XMsLr7F3W4oQ&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 47,
+                titulo: "Street Fighter Alpha 3",
+                genero: "Lucha",
+                imagen: "https://m.media-amazon.com/images/I/71KPsro--0L.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 48,
+                titulo: "Suikoden II",
+                genero: "RPG",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/c/cc/Suikoden2_NA.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 49,
+                titulo: "Super Shot Soccer",
+                genero: "Deportes",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6aku2tnwOmQOwFGaMBhvGU-O4Y4QqImiid3D4JRhWfg&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 50,
+                titulo: "Syphon Filter",
+                genero: "Acción",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/f/f9/Syphon_Filter_US_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 51,
+                titulo: "Team Buddies",
+                genero: "Acción",
+                imagen: "https://m.media-amazon.com/images/I/51wSVbo3NzL._AC_UF1000,1000_QL80_.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 52,
+                titulo: "Tekken 3",
+                genero: "Lucha",
+                imagen: "https://m.media-amazon.com/images/I/61Xr894A3-L._AC_UF1000,1000_QL80_.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 53,
+                titulo: "Tenchu 2 - Birth of the Stealth Assassins",
+                genero: "Terror / Sigilo",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/0/01/Tenchu_2_-_Birth_of_the_Stealth_Assassins_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 55,
+                titulo: "Tomb Raider 2",
+                genero: "Acción / Aventura",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3VbNYHetghLS8fVG-_pdo45EOCN0y0kbv-tYPNe9a46BNbUFZ7QLolaA&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 56,
+                titulo: "Tony Hawks Pro Skater 3",
+                genero: "Deportes",
+                imagen: "https://i.ebayimg.com/images/g/srsAAMXQjwVQ9wAG/s-l400.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 57,
+                titulo: "Twisted Metal 2",
+                genero: "Carreras",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdtTWgiAFbOX6HZXfv3cv1arlimm7s5K3WumDYoCUzmg&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 58,
+                titulo: "Twisted Metal 4",
+                genero: "Carreras",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/e/e5/Twisted_Metal_4.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 59,
+                titulo: "Vagrant Story",
+                genero: "RPG",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcOMB1F5p1iYGLjNF_hTSDGdZo1NOo1jBnlrGF06b5A&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 60,
+                titulo: "Vigilante 8 - 2nd Offense",
+                genero: "Carreras",
+                imagen: "https://m.media-amazon.com/images/I/71z4OvSZntL.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 61,
+                titulo: "Wild 9",
+                genero: "Plataformas",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI_xtZBCVMwBX3BS_FQaENGWaPSkv4tIGlqGoZOuKwuw&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 62,
+                titulo: "Winning Eleven",
+                genero: "Deportes",
+                imagen: "https://i.ebayimg.com/images/g/wRoAAOSwfc9itzdO/s-l1200.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 63,
+                titulo: "Wipeout XL",
+                genero: "Carreras",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfPcVcuu_SSb3dpH9lcK_-SnYC5Kdt7yp1WNX4SWLC7s-UCMlqpVhIXvy8&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 64,
+                titulo: "Worms Armageddon",
+                genero: "Acción",
+                imagen: "https://i.ebayimg.com/images/g/cMcAAMXQq8BQ84Jd/s-l400.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 65,
+                titulo: "WWF Smackdown!",
+                genero: "Deportes",
+                imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKby5OQcXFefiE71ZWmZ_pvd-ptpH227lbPjDIOMjgAA&s=10", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 66,
+                titulo: "X-Men - Mutant Academy",
+                genero: "Lucha",
+                imagen: "https://m.media-amazon.com/images/I/61fvfCdzT0L.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 67,
+                titulo: "X-Men - Mutant Academy 2",
+                genero: "Lucha",
+                imagen: "https://m.media-amazon.com/images/I/71HaBfW1yLL.jpg", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 68,
+                titulo: "Xenogears",
+                genero: "RPG",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/6/6f/Xenogears_box.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            },
+            {
+                id: 69,
+                titulo: "Yu-Gi-Oh! Forbidden Memories",
+                genero: "RPG",
+                imagen: "https://upload.wikimedia.org/wikipedia/en/b/b3/Yu-Gi-Oh%21_Forbidden_Memories_Cover.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original", // <-- PEGA AQUÍ EL ENLACE DE LA IMAGEN DE PORTADA
+                enlaceDescarga: "https://drive.google.com/drive/folders/1pt_w6WrJMw3TBc02xInbquzY6IGvKIij", // <-- PEGA AQUÍ EL ENLACE DE DESCARGA DE ESTE JUEGO
+            }
+        ];
+
+        /* ==================================================================================
+           ESTADO DE LA APLICACIÓN Y VARIABLES DE CONTROL
+           ================================================================================== */
+        // Carga los favoritos guardados previamente en el navegador (localStorage)
+        let favoritos = JSON.parse(localStorage.getItem('nairb_ps1_favs') || '[]');
+        
+        // Marcamos cuáles juegos son favoritos
+        listaDeJuegos.forEach(juego => {
+            juego.isFavorite = favoritos.includes(juego.id);
+        });
+
+        let generoActivo = "ALL";
+        let terminoBusqueda = "";
+        let ordenActual = "AZ";
+        let juegoSeleccionado = null;
+
+        // ELEMENTOS DEL DOM
+        const catalogGrid = document.getElementById('catalog-grid');
+        const noResults = document.getElementById('no-results');
+        const searchInput = document.getElementById('search-input');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const sortFilter = document.getElementById('sort-filter');
+        const genrePillsContainer = document.getElementById('genre-pills');
+        const counterVisible = document.getElementById('counter-visible');
+        const counterTotal = document.getElementById('counter-total');
+        const btnResetFilters = document.getElementById('btn-reset-filters');
+
+        // ELEMENTOS DE LA VENTANA MODAL
+        const gameModal = document.getElementById('game-modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalTitle = document.getElementById('modal-title');
+        const modalGenreBadge = document.getElementById('modal-genre-badge');
+        const modalDownloadBtn = document.getElementById('modal-download-btn');
+        const modalFavBtn = document.getElementById('modal-fav-btn');
+        const modalFavText = document.getElementById('modal-fav-text');
+
+        // ELEMENTOS DEL TOAST NOTIFICACIÓN
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const toastIcon = document.getElementById('toast-icon');
+
+        // LISTA DE GÉNEROS PARA LOS FILTROS
+        const generos = [
+            "ALL",
+            "Carreras",
+            "Lucha",
+            "RPG",
+            "Plataformas",
+            "Terror / Sigilo",
+            "Deportes",
+            "Acción / Aventura",
+            "❤️ Favoritos"
+        ];
+
+        /* ==================================================================================
+           FUNCIÓN: GENERAR BOTONES DE FILTRO DE GÉNEROS
+           ================================================================================== */
+        function renderizarPillsGeneros() {
+            genrePillsContainer.innerHTML = '';
+            generos.forEach(gen => {
+                const isSelected = generoActivo === gen;
+                const pill = document.createElement('button');
+                pill.className = `px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap border transition-all flex items-center gap-2 ${
+                    isSelected 
+                        ? 'bg-gradient-to-r from-cyber-cyan to-cyber-psblue text-black border-cyber-cyan font-orbitron shadow-lg shadow-cyber-cyan/20' 
+                        : 'bg-cyber-card/80 border-cyber-border text-slate-300 hover:border-cyber-cyan/50 hover:text-white'
+                }`;
+                
+                let iconClass = 'fa-tag';
+                if (gen === 'ALL') iconClass = 'fa-border-all';
+                else if (gen === '❤️ Favoritos') iconClass = 'fa-heart text-red-400';
+                else if (gen.includes('Carreras')) iconClass = 'fa-car-side';
+                else if (gen.includes('Lucha')) iconClass = 'fa-hand-fist';
+                else if (gen.includes('RPG')) iconClass = 'fa-hat-wizard';
+                else if (gen.includes('Plataformas')) iconClass = 'fa-cubes';
+                else if (gen.includes('Terror')) iconClass = 'fa-ghost';
+                else if (gen.includes('Deportes')) iconClass = 'fa-trophy';
+                else if (gen.includes('Acción')) iconClass = 'fa-dragon';
+                
+                pill.innerHTML = `<i class="fa-solid ${iconClass}"></i> <span>${gen === 'ALL' ? 'Todos los Juegos' : gen}</span>`;
+                pill.addEventListener('click', () => {
+                    generoActivo = gen;
+                    renderizarPillsGeneros();
+                    filtrarYRenderizar();
+                });
+                genrePillsContainer.appendChild(pill);
+            });
+        }
+
+        /* ==================================================================================
+           FUNCIÓN: DIBUJAR TARJETAS EN PANTALLA
+           ================================================================================== */
+        function renderizarTarjetas(lista) {
+            catalogGrid.innerHTML = '';
+            counterVisible.textContent = lista.length;
+            counterTotal.textContent = listaDeJuegos.length;
+
+            if (lista.length === 0) {
+                catalogGrid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            catalogGrid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+
+            lista.forEach(juego => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = "group relative bg-cyber-card border border-cyber-border hover:border-cyber-cyan/60 rounded-2xl overflow-hidden card-hover flex flex-col justify-between";
+
+                // Determina la imagen de la portada: si no se pegó ninguna, genera una portada gamer retro en CSS
+                const tieneImagen = juego.imagen && juego.imagen.trim() !== "";
+                
+                // Iconos por género para la portada retro por defecto
+                let iconoGenero = "fa-gamepad";
+                if (juego.genero.includes("Carreras")) iconoGenero = "fa-car-side";
+                else if (juego.genero.includes("Lucha")) iconoGenero = "fa-hand-fist";
+                else if (juego.genero.includes("RPG")) iconoGenero = "fa-hat-wizard";
+                else if (juego.genero.includes("Plataformas")) iconoGenero = "fa-cubes";
+                else if (juego.genero.includes("Terror")) iconoGenero = "fa-ghost";
+                else if (juego.genero.includes("Deportes")) iconoGenero = "fa-trophy";
+
+                tarjeta.innerHTML = `
+                    <!-- Encabezado de la Tarjeta con la Portada -->
+                    <div class="relative h-44 bg-slate-900 overflow-hidden flex items-center justify-center">
+                        ${tieneImagen ? `
+                            <img src="${juego.imagen}" alt="${juego.titulo}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        ` : ''}
+                        
+                        <!-- Portada Gamer por Defecto (se muestra si no agregas imagen o falla) -->
+                        <div class="w-full h-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-4 flex flex-col justify-between ${tieneImagen ? 'hidden' : 'flex'}">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-mono font-bold text-cyber-cyan uppercase">${juego.genero}</span>
+                                <i class="fa-solid ${iconoGenero} text-2xl text-cyber-cyan/60"></i>
+                            </div>
+                            <div class="text-center my-auto">
+                                <div class="w-12 h-12 mx-auto rounded-xl bg-cyber-psblue/40 border border-cyber-cyan/50 flex items-center justify-center text-cyber-cyan text-xl mb-1 shadow-lg">
+                                    <i class="fa-solid ${iconoGenero}"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BADGE SUPERIOR DERECHO SOLICITADO: MUESTRA ÚNICAMENTE "PS1" -->
+                        <div class="absolute top-3 right-3 z-10">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono font-extrabold bg-cyber-dark/90 border border-cyber-cyan text-cyber-cyan shadow-lg backdrop-blur-md">
+                                PS1
+                            </span>
+                        </div>
+
+                        <!-- Botón Favorito (Corazón) sobre la portada -->
+                        <div class="absolute top-3 left-3 z-10">
+                            <button class="btn-fav w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-slate-700 hover:border-red-500 flex items-center justify-center text-slate-300 hover:text-red-500 transition-all" data-id="${juego.id}">
+                                <i class="${juego.isFavorite ? 'fa-solid fa-heart text-red-500' : 'fa-regular fa-heart'}"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cuerpo de la Tarjeta (Título y Género) -->
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-[11px] font-mono uppercase tracking-wider text-cyber-magenta font-bold mb-1">
+                                ${juego.genero}
+                            </div>
+                            <h3 class="font-orbitron text-base font-bold text-slate-100 group-hover:text-cyber-cyan transition-colors line-clamp-2 leading-snug">
+                                ${juego.titulo}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Pie de la Tarjeta: BOTÓN ÚNICO DE DESCARGAR Y BOTÓN DE INFO -->
+                    <div class="p-4 pt-0 flex gap-2">
+                        <!-- BOTÓN PRINCIPAL: DESCARGAR -->
+                        <button class="btn-descargar flex-grow py-3 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-psblue text-black font-orbitron font-extrabold text-xs uppercase tracking-wider hover:opacity-90 shadow-lg shadow-cyber-cyan/20 transition-all flex items-center justify-center gap-2" data-id="${juego.id}">
+                            <i class="fa-solid fa-download"></i>
+                            <span>DESCARGAR</span>
+                        </button>
+                        
+                        <!-- Botón Secundario: Detalles / Emulador -->
+                        <button class="btn-info px-3.5 py-3 rounded-xl bg-cyber-dark border border-cyber-border hover:border-cyber-cyan hover:text-cyber-cyan text-slate-400 transition-all" data-id="${juego.id}" title="Ver Detalles de Emulación">
+                            <i class="fa-solid fa-circle-info text-sm"></i>
+                        </button>
+                    </div>
+                `;
+
+                // Eventos de los botones de la tarjeta
+                tarjeta.querySelector('.btn-descargar').addEventListener('click', () => ejecutarDescarga(juego));
+                tarjeta.querySelector('.btn-info').addEventListener('click', () => abrirModal(juego));
+                tarjeta.querySelector('.btn-fav').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    alternarFavorito(juego.id);
+                });
+
+                catalogGrid.appendChild(tarjeta);
+            });
+        }
+
+        /* ==================================================================================
+           FUNCIÓN: EJECUTAR DESCARGAR EL JUEGO
+           ================================================================================== */
+        function ejecutarDescarga(juego) {
+            // Si el usuario ya pegó un enlace en `enlaceDescarga`, abre la descarga directamente
+            if (juego.enlaceDescarga && juego.enlaceDescarga.trim() !== "") {
+                window.open(juego.enlaceDescarga, '_blank');
+                mostrarToast(`Iniciando descarga de: ${juego.titulo}`, 'fa-download text-cyber-cyan');
+            } else {
+                // Si aún no pegó el enlace, le notificamos amigablemente y le abrimos los detalles
+                mostrarToast(`Pega tu enlace de descarga en el código para "${juego.titulo}"`, 'fa-info-circle text-amber-400');
+                abrirModal(juego);
+            }
+        }
+
+        /* ==================================================================================
+           FUNCIÓN: FILTRAR Y ORDENAR EL CATÁLOGO
+           ================================================================================== */
+        function filtrarYRenderizar() {
+            let resultado = listaDeJuegos.filter(juego => {
+                // Filtro por favoritos
+                if (generoActivo === '❤️ Favoritos') {
+                    if (!juego.isFavorite) return false;
+                } else if (generoActivo !== 'ALL' && !juego.genero.includes(generoActivo)) {
+                    return false;
+                }
+
+                // Filtro por término de búsqueda en el input
+                if (terminoBusqueda.trim() !== '') {
+                    const q = terminoBusqueda.toLowerCase();
+                    const coincideTitulo = juego.titulo.toLowerCase().includes(q);
+                    const coincideGenero = juego.genero.toLowerCase().includes(q);
+                    if (!coincideTitulo && !coincideGenero) return false;
+                }
+
+                return true;
+            });
+
+            // Ordenamiento (A-Z / Z-A)
+            if (ordenActual === 'AZ') {
+                resultado.sort((a, b) => a.titulo.localeCompare(b.titulo));
+            } else if (ordenActual === 'ZA') {
+                resultado.sort((a, b) => b.titulo.localeCompare(a.titulo));
+            }
+
+            renderizarTarjetas(resultado);
+        }
+
+        /* ==================================================================================
+           FUNCIÓN: MARCAR / DESMARCAR FAVORITOS
+           ================================================================================== */
+        function alternarFavorito(id) {
+            const juego = listaDeJuegos.find(j => j.id === id);
+            if (!juego) return;
+
+            juego.isFavorite = !juego.isFavorite;
+
+            if (juego.isFavorite) {
+                if (!favoritos.includes(id)) favoritos.push(id);
+                mostrarToast(`"${juego.titulo}" guardado en Favoritos`, 'fa-heart text-red-400');
+            } else {
+                favoritos = favoritos.filter(favId => favId !== id);
+                mostrarToast(`"${juego.titulo}" eliminado de Favoritos`, 'fa-trash text-slate-400');
+            }
+
+            // Guarda el estado en la memoria del navegador
+            localStorage.setItem('nairb_ps1_favs', JSON.stringify(favoritos));
+
+            if (juegoSeleccionado && juegoSeleccionado.id === id) {
+                actualizarBotonFavModal();
+            }
+
+            filtrarYRenderizar();
+        }
+
+        /* ==================================================================================
+           FUNCIÓN: ABRIR VENTANA MODAL CON DETALLES DEL JUEGO
+           ================================================================================== */
+        function abrirModal(juego) {
+            juegoSeleccionado = juego;
+            modalTitle.textContent = juego.titulo;
+            modalGenreBadge.textContent = juego.genero;
+
+            actualizarBotonFavModal();
+            gameModal.classList.remove('hidden');
+        }
+
+        function actualizarBotonFavModal() {
+            if (!juegoSeleccionado) return;
+            if (juegoSeleccionado.isFavorite) {
+                modalFavText.textContent = "Quitar de Favoritos";
+                modalFavBtn.classList.add('border-red-500', 'text-red-400');
+            } else {
+                modalFavText.textContent = "Favoritos";
+                modalFavBtn.classList.remove('border-red-500', 'text-red-400');
+            }
+        }
+
+        /* ==================================================================================
+           FUNCIÓN: NOTIFICACIONES TIPO TOAST EN LA ESQUINA INFERIOR
+           ================================================================================== */
+        function mostrarToast(mensaje, iconoClase = 'fa-check-circle text-cyber-cyan') {
+            toastMessage.textContent = mensaje;
+            toastIcon.className = `fa-solid ${iconoClase} text-lg`;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        /* ==================================================================================
+           ASIGNACIÓN DE EVENTOS A LOS ELEMENTOS DE CONTROL DE LA PÁGINA
+           ================================================================================== */
+        // Buscador
+        searchInput.addEventListener('input', (e) => {
+            terminoBusqueda = e.target.value;
+            clearSearchBtn.classList.toggle('hidden', terminoBusqueda === '');
+            filtrarYRenderizar();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            terminoBusqueda = '';
+            clearSearchBtn.classList.add('hidden');
+            filtrarYRenderizar();
+        });
+
+        // Ordenador A-Z
+        sortFilter.addEventListener('change', (e) => {
+            ordenActual = e.target.value;
+            filtrarYRenderizar();
+        });
+
+        // Restablecer filtros
+        btnResetFilters.addEventListener('click', () => {
+            terminoBusqueda = '';
+            generoActivo = 'ALL';
+            ordenActual = 'AZ';
+            searchInput.value = '';
+            sortFilter.value = 'AZ';
+            clearSearchBtn.classList.add('hidden');
+            renderizarPillsGeneros();
+            filtrarYRenderizar();
+        });
+
+        // Acciones de la ventana Modal
+        modalClose.addEventListener('click', () => gameModal.classList.add('hidden'));
+        gameModal.addEventListener('click', (e) => {
+            if (e.target === gameModal) gameModal.classList.add('hidden');
+        });
+
+        modalDownloadBtn.addEventListener('click', () => {
+            if (juegoSeleccionado) ejecutarDescarga(juegoSeleccionado);
+        });
+
+        modalFavBtn.addEventListener('click', () => {
+            if (juegoSeleccionado) alternarFavorito(juegoSeleccionado.id);
+        });
+
+        /* ==================================================================================
+           INICIALIZACIÓN AL CARGAR LA PÁGINA
+           ================================================================================== */
+        renderizarPillsGeneros();
+        filtrarYRenderizar();
+    </script>
+</body>
+</html>
